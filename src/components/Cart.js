@@ -8,9 +8,11 @@ function Cart({ cart, updateCart }) {
 		(acc, item) => acc + cart[item].amount * cart[item].price,
 		0
 	)
+
 	useEffect(() => {
-		document.title = `LMJ: ${total}€ d'achats`
-	}, [total])
+		document.title = `LMJ: ${total}€ d'achats`;
+		localStorage.setItem('cart', JSON.stringify(cart));
+	}, [cart])
 
 	return isOpen ? (
 		<div className='lmj-cart'>
